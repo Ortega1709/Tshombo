@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../assets/bootstrap/bootstrap.min.css">
-  <title>Administrateur - Ajouter</title>
+  <title>Shop - Ajouter</title>
 </head>
 <body>
 
@@ -23,7 +23,7 @@
           <a class="nav-link" href="dashboard.php">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="shops.php">Shops</a>
+          <a class="nav-link" href="shops.php" style="color: white">* Shops</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="clients.php">Clients</a>
@@ -41,7 +41,7 @@
           <a class="nav-link" href="promotions.php">Promotions</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="administrateur.php" style="color: white">* Administrateurs</a>
+          <a class="nav-link" href="administrateur.php">Administrateurs</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="../Controllers/Administrateur.php?d=1">Déconnexion</a>
@@ -53,7 +53,7 @@
 
 <!-- main -->
 <div class="container p-3 mb-5" style="margin-top: 50px; max-width: 380px">
-<button class="btn btn-close text-dark" style="color: white" onclick="window.location.href='administrateur.php'"></button>
+<button class="btn btn-close text-dark" style="color: white" onclick="window.location.href='shops.php'"></button>
 <center>
   <span><h5 style="font-weight: bold;">Ajout d'un administrateur</h5></span>
 </center>
