@@ -55,16 +55,36 @@
 <div class="container p-3 mb-5" style="margin-top: 50px; max-width: 380px">
 <button class="btn btn-close text-dark" style="color: white" onclick="window.location.href='shops.php'"></button>
 <center>
-  <span><h5 style="font-weight: bold;">Ajout d'un administrateur</h5></span>
+  <span><h5 style="font-weight: bold;">Ajout d'un Shop</h5></span>
 </center>
 <div class="table-responsive">
   <form action="../Controllers/Administrateur.php" method="post" style="margin-bottom:50px">
-      <label for="nom">Nom complet</label><br>
-      <input type="text" name="nom" id="nom" required placeholder="nom - post - prenom" class="form-control"><br>
-      <label for="email">Email</label><br>
+      <label for="nom">Nom</label><br>
+      <input type="text" name="nom" id="nom" required placeholder="De la paix" class="form-control"><br>
+      <label for="email">Email </label><br>
       <input type="email" name="email" id="email" required placeholder="exemple@gmail.com" class="form-control"><br>
       <label for="passwd">Password</label><br>
       <input type="text" name="passwd" id="passwd" required placeholder="*******" class="form-control"><br>
+      <label for="n">N°</label><br>
+      <input type="number" name="n" id="n" placeholder="12" required class="form-control"><br>
+      <label for="avenue">Avenue</label><br>
+      <input type="text" name="avenue" id="avenue" placeholder="Depot" required class="form-control"><br>
+      <label for="quartier">Quartier</label><br>
+      <input type="text" name="quartier" id="quartier" placeholder="Kalubwe" required class="form-control"><br>
+      <label for="commune">Commune</label><br>
+      <select name="commune" id="commune" class="form-select">
+        <option value="Select" disabled selected> ... </option>
+        <option value="Lubumbashi">Lubumbashi</option>
+        <option value="Kampemba">Kampemba</option>
+        <option value="Ruashi">Ruashi</option>
+        <option value="Kamalondo">Kamalondo</option>
+        <option value="Kipushi">Kipushi</option>
+        <option value="Annexe">Annexe</option>
+      </select><br>
+      <label for="telephone">Telephone</label><br>
+      <input type="number" name="telephone" id="telephone" placeholder="996875512" required class="form-control"><br>
+      <label for="image">Image</label><br>
+      <input type="file" name="image" id="image" required class="form-control"><br>
       <input type="submit" value="Ajouter" name="ajouter" class="btn btn-dark"><br>
   </form>
 </div>

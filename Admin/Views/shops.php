@@ -53,7 +53,7 @@
 
 <!-- main -->
 <div class="container" style="margin-top: 50px;">
-  <button class="btn bg-dark" style="color: white">Ajouter</button>
+  <button class="btn bg-dark" style="color: white" onclick="window.location.href='ajouterShop.php'">Ajouter</button>
   <br>
   <br>
   <div class="table-responsive">
