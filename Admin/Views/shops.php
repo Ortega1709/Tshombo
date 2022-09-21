@@ -1,3 +1,15 @@
+<?php
+
+  include ("../Db/Database.php");
+  include ("../Models/Shop.php");
+
+  $database = new Database();
+  $connexion = $database->getConnection();
+
+  $shop = new Shop($connexion);
+
+  $result = $shop->shops();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,19 +84,23 @@
         <th scope="col">Actions</th>
       </tr>
 
+      <?php while($res = mysqli_fetch_assoc($result)) { ?>
+
       <tr>
-        <td>1</td>
-        <td>Mupendwa</td>
-        <td>mupendwa@gmail.com</td>
-        <td>*********</td>
-        <td>0996875512, 0828547535</td>
-        <td>33</td>
-        <td>Depot</td>
-        <td>Kalubwe</td>
-        <td>Lubumbashi</td>
-        <td>2020-09-17</td>
+        <td><?=$res["idShop"] ?></td>
+        <td><?=$res["nom"] ?></td>
+        <td><?=$res["email"] ?></td>
+        <td><?=$res["passwd"] ?></td>
+        <td><?=$res["numero"] ?></td>
+        <td><?=$res["avenue"] ?></td>
+        <td><?=$res["quartier"] ?></td>
+        <td><?=$res["idShop"] ?></td>
+        <td><?=$res["commune"] ?></td>
+        <td><?=$res["created"] ?></td>
         <td><a href="" style="text-decoration: none;">Editer</a> &nbsp; <a href="" style="text-decoration: none;">Supprimer</a></td>
       </tr>
+
+      <?php } ?>
     </table>
   </div>
 </div>

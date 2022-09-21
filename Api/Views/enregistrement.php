@@ -12,32 +12,38 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     include_once "../db/Database.php";
-    include_once "../Models/Utilisateur.php";
+    include_once "../Models/Client.php";
 
     $database = new Database();
     $connection = $database->getConnection();
 
-    $utilisateur = new Utilisateur($connection);
+    $utilisateur = new Client($connection);
     $data = json_decode(file_get_contents("php://input"));
 
-    if (!empty($data->email) && !empty($data->password)) {
+    if (
+        !empty($data->username) && 
+        !empty($data->email) &&
+        !empty($data->numero) &&
+        !empty($data->password)) {
 
+            $utilisateur->username = $data->username;
             $utilisateur->email = $data->email;
+            $utilisateur->numero = $data->numero;
             $utilisateur->password = $data->password;
 
-            if ($utilisateur->authentification()) {
+            if ($utilisateur->ajouterCompte()) {
 
                 http_response_code(201); // code success
-                echo json_encode(["message" => "Connexion réussie"]);
+                echo json_encode(["message" => "L'ajout a été effectué"]);
             } else {
 
                 http_response_code(503); // code erreur de service
-                echo json_encode(["message" => "Email ou mot de passe incorrect"]);
+                echo json_encode(["message" => "L'ajout n'a pas été effectué"]);
             }
         } else {
 
             http_response_code(503); // code erreur de service
-            echo json_encode(["message" => "Erreur de connexion"]);
+            echo json_encode(["message" => "L'ajout n'a pas été effectué"]);
         }
 } else {
 

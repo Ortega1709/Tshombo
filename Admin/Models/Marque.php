@@ -1,7 +1,5 @@
 <?php 
 
-    session_start();
-
     class Marque {
 
         private $connexion = null;

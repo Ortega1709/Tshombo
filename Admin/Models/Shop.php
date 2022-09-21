@@ -24,6 +24,15 @@
             $this->connexion = $connexion;
         }
 
+        public function shops() {
+
+            $query = "SELECT SHOP.idShop, SHOP.nom, SHOP.email, SHOP.passwd, NUMERO.numero, ADRESSE.numero, ADRESSE.avenue, ADRESSE.quartier, ADRESSE.commune, SHOP.created FROM SHOP, ADRESSE, NUMERO WHERE SHOP.idShop = ADRESSE.idShop AND SHOP.idShop = NUMERO.idShop";
+            $result = mysqli_query($this->connexion, $query);
+
+            if ($result) {
+                return $result;
+            } else return false;
+        }
 
         public function ajouterShop() {
             $nom = htmlspecialchars(strip_tags($this->nom));

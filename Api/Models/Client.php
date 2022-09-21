@@ -1,7 +1,7 @@
 <?php 
 
 
-    class Utilisateur {
+    class Client {
         
         private $connexion = null;
         private $table = "UTILISATEUR";

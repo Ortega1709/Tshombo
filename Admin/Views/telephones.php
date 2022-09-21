@@ -1,3 +1,17 @@
+<?php 
+
+  include ("../Db/Database.php");
+  include ("../Models/Telephone.php");
+
+  $database = new Database();
+  $connexion = $database->getConnection();
+
+  $telephone = new Telephone($connexion);
+
+  $result = $telephone->telephones();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +67,7 @@
 
 <!-- main -->
 <div class="container" style="margin-top: 50px;">
-  <button class="btn bg-dark" style="color: white">Ajouter</button>
+  <button class="btn bg-dark" style="color: white" onclick="window.location.href='ajouterTelephone.php'">Ajouter</button>
   <br>
   <br>
   <div class="table-responsive">
@@ -77,24 +91,26 @@
         <th scope="col">Actions</th>
       </tr>
 
+      <?php while($res = mysqli_fetch_assoc($result)) { ?>
       <tr>
-        <td>1</td>
-        <td>Mupendwa</td>
-        <td>Samsung</td>
-        <td>Galaxy s22 ultra</td>
-        <td>20</td>
-        <td>Android 12</td>
-        <td>6,77</td>
-        <td>2.40</td>
-        <td>12</td>
-        <td>512</td>
-        <td>12Mpx + 1 capteur ultra grand angle</td>
-        <td>5000</td>
-        <td>grise</td>
-        <td>h504c9cc85fd.png</td>
-        <td>500</td>
+        <td><?=$res["idTelephone"] ?></td>
+        <td><?=$res["idShop"] ?></td>
+        <td><?=$res["idMarque"] ?></td>
+        <td><?=$res["model"] ?></td>
+        <td><?=$res["quantite"] ?></td>
+        <td><?=$res["os"] ?></td>
+        <td><?=$res["ecran"] ?></td>
+        <td><?=$res["processeur"] ?></td>
+        <td><?=$res["ram"] ?></td>
+        <td><?=$res["stockage"] ?></td>
+        <td><?=$res["photo"] ?></td>
+        <td><?=$res["batterie"] ?></td>
+        <td><?=$res["couleur"] ?></td>
+        <td><img src="../../static/<?=$res["image"] ?>" width="50px" height="50px" style="border-radius: 100%;" onclick="window.location.href='../../static/<?=$res['image'] ?>'"></td>
+        <td><?=$res["prix"] ?></td>
         <td><a href="" style="text-decoration: none;">Editer</a> &nbsp; <a href="" style="text-decoration: none;">Supprimer</a></td>
       </tr>
+      <?php } ?>
     </table>
   </div>
 </div>

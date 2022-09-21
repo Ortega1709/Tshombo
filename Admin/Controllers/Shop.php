@@ -49,11 +49,9 @@
                         move_uploaded_file($fileTempName, $fileDestination);
                         $url = "../Views/shops.php";
                         header("Location: $url");
-                        
+
                     } else echo "Erreur d'insertion";
                 }else echo "File Size Limit beyond acceptance";
             }else echo "Something Went Wrong Please try again!";
         }else echo "You can't upload this extention of file";
-        
-
     }

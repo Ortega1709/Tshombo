@@ -17,33 +17,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $database = new Database();
     $connection = $database->getConnection();
 
-    $utilisateur = new Utilisateur($connection);
+    $utilisateur = new Client($connection);
     $data = json_decode(file_get_contents("php://input"));
 
-    if (
-        !empty($data->username) && 
-        !empty($data->email) &&
-        !empty($data->numero) &&
-        !empty($data->password)) {
+    if (!empty($data->email) && !empty($data->password)) {
 
-            $utilisateur->username = $data->username;
             $utilisateur->email = $data->email;
-            $utilisateur->numero = $data->numero;
             $utilisateur->password = $data->password;
 
-            if ($utilisateur->ajouterCompte()) {
+            if ($utilisateur->authentification()) {
 
                 http_response_code(201); // code success
-                echo json_encode(["message" => "L'ajout a été effectué"]);
+                echo json_encode(["message" => "Connexion réussie"]);
             } else {
 
                 http_response_code(503); // code erreur de service
-                echo json_encode(["message" => "L'ajout n'a pas été effectué"]);
+                echo json_encode(["message" => "Email ou mot de passe incorrect"]);
             }
         } else {
 
             http_response_code(503); // code erreur de service
-            echo json_encode(["message" => "L'ajout n'a pas été effectué"]);
+            echo json_encode(["message" => "Erreur de connexion"]);
         }
 } else {
 
