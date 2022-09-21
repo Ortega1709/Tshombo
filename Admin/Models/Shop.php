@@ -2,21 +2,22 @@
 
 
     session_start();
-    class Promotion {
+    class Shop {
 
         private $connexion = null;
         private $table = "SHOP";
-
-        private string $idShop;
-        private string $nom;
-        private string $email;
-        private string $passwd;
-        private string $image;
-        private string $numero;
-        private string $avenue;
-        private string $quartier;
-        private string $commune;
-        private string $created;
+        
+        public string $idShop;
+        public string $nom;
+        public string $email;
+        public string $passwd;
+        public string $image;
+        public string $numero;
+        public string $avenue;
+        public string $quartier;
+        public string $commune;
+        public string $telephone;
+        public string $created;
 
 
         public function __construct($connexion) {
@@ -33,6 +34,7 @@
             $avenue = htmlspecialchars(strip_tags($this->avenue));
             $quartier = htmlspecialchars(strip_tags($this->quartier));
             $commune = htmlspecialchars(strip_tags($this->commune));
+            $telephone = htmlspecialchars(strip_tags($this->telephone));
             $table = $this->table;
 
             $query = "INSERT INTO `$table`(`nom`, `email`, `passwd`, `image`) VALUES ('$nom','$email','$passwd','$image')";
@@ -47,10 +49,17 @@
                     $res = mysqli_fetch_assoc($result_one);
                     $idShop = $res['LASTID'];
 
-                    $query_two = "INSERT INTO `$table`(`idShop`, `numero`, `avenue`, `quartier`, `commune`) VALUES ('$idShop','$numero','$avenue','$quartier','$commune')";
+                    $query_two = "INSERT INTO `ADRESSE`(`idShop`, `numero`, `avenue`, `quartier`, `commune`) VALUES ('$idShop','$numero','$avenue','$quartier','$commune')";
                     $result_two = mysqli_query($this->connexion, $query_two);
                     if ($result_two) {
-                        return 1;
+                        
+                        $query_three = "INSERT INTO `NUMERO`(`idShop`, `numero`) VALUES ('$idShop','$telephone')";
+                        $result_three = mysqli_query($this->connexion, $query_three);
+                        if ($result_three) {
+
+                            return 1;
+                        } else return 0;
+
                     } else return 0;
                 }
 

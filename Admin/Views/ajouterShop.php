@@ -58,14 +58,14 @@
   <span><h5 style="font-weight: bold;">Ajout d'un Shop</h5></span>
 </center>
 <div class="table-responsive">
-  <form action="../Controllers/Administrateur.php" method="post" style="margin-bottom:50px">
+  <form action="../Controllers/Shop.php" method="post" style="margin-bottom:50px" enctype="multipart/form-data">
       <label for="nom">Nom</label><br>
       <input type="text" name="nom" id="nom" required placeholder="De la paix" class="form-control"><br>
       <label for="email">Email </label><br>
       <input type="email" name="email" id="email" required placeholder="exemple@gmail.com" class="form-control"><br>
       <label for="passwd">Password</label><br>
       <input type="text" name="passwd" id="passwd" required placeholder="*******" class="form-control"><br>
-      <label for="n">N°</label><br>
+      <label for="n">n°</label><br>
       <input type="number" name="n" id="n" placeholder="12" required class="form-control"><br>
       <label for="avenue">Avenue</label><br>
       <input type="text" name="avenue" id="avenue" placeholder="Depot" required class="form-control"><br>
@@ -83,8 +83,8 @@
       </select><br>
       <label for="telephone">Telephone</label><br>
       <input type="number" name="telephone" id="telephone" placeholder="996875512" required class="form-control"><br>
-      <label for="image">Image</label><br>
-      <input type="file" name="image" id="image" required class="form-control"><br>
+      <label for="file">Image</label><br>
+      <input type="file" name="file" id="file" required class="form-control"><br>
       <input type="submit" value="Ajouter" name="ajouter" class="btn btn-dark"><br>
   </form>
 </div>
