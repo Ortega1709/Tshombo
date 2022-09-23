@@ -17,21 +17,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $database = new Database();
     $connection = $database->getConnection();
 
-    $utilisateur = new Client($connection);
+    $client = new Client($connection);
     $data = json_decode(file_get_contents("php://input"));
 
     if (
         !empty($data->username) && 
+        !empty($data->nom) &&
+        !empty($data->postNom) &&
         !empty($data->email) &&
-        !empty($data->numero) &&
-        !empty($data->password)) {
+        !empty($data->passwd)) {
 
-            $utilisateur->username = $data->username;
-            $utilisateur->email = $data->email;
-            $utilisateur->numero = $data->numero;
-            $utilisateur->password = $data->password;
+            $client->username = $data->username;
+            $client->nom = $data->nom;
+            $client->postNom = $data->postNom;
+            $client->email = $data->email;
+            $client->passwd = $data->passwd;
 
-            if ($utilisateur->ajouterCompte()) {
+            if ($client->ajouterCompte()) {
 
                 http_response_code(201); // code success
                 echo json_encode(["message" => "L'ajout a été effectué"]);

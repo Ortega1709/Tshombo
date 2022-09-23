@@ -12,22 +12,22 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     include_once "../db/Database.php";
-    include_once "../Models/Utilisateur.php";
+    include_once "../Models/Client.php";
 
     $database = new Database();
     $connection = $database->getConnection();
 
-    $utilisateur = new Client($connection);
+    $client = new Client($connection);
     $data = json_decode(file_get_contents("php://input"));
 
-    if (!empty($data->email) && !empty($data->password)) {
+    if (!empty($data->email) && !empty($data->passwd)) {
 
-            $utilisateur->email = $data->email;
-            $utilisateur->password = $data->password;
+            $client->email = $data->email;
+            $client->passwd = $data->passwd;
 
-            if ($utilisateur->authentification()) {
+            if ($client->authentification()) {
 
-                http_response_code(201); // code success
+                http_response_code(200); // code success
                 echo json_encode(["message" => "Connexion réussie"]);
             } else {
 
